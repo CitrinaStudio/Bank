@@ -3,6 +3,7 @@ import sys
 
 import gen
 
+
 def main():
     type = sys.argv[1]
     
