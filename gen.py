@@ -33,4 +33,12 @@ def gen_user():
     bill_id = nprand.randint(1, 1000000)
     user_id = nprand.randint(1, 1000000)
     balance = nprand.randint(50, 100000000)
-    name = gen_name(random.randint(1, 5))
+    name = gen_name(random.randint(3, 7))
+
+def gen_situations():
+    name_bank = gen_name(random.randint(4, 6))
+    s1 = (name_bank, '')
+    s2 = ('')
+    s3 = ('The dollar rate rose by 32 kopecks and the bank went bankrupt, all employees were fired and the coins of the bank climbed into huge debts. ')
+    a = (s1, s2, s3)
+    nprand.choice(a)
