@@ -34,3 +34,18 @@ def gen_user():
     user_id = nprand.randint(1, 1000000)
     balance = nprand.randint(50, 100000000)
     name = gen_name(random.randint(1, 5))
+
+def gen_bank_adress(): #bl9 ne beite
+    cityname = ('A', 'B', 'C', 'D', 'E') 
+    streetname = ('a', 'b', 'c', 'd', 'e') 
+    city_name = nprand.choice(cityname) 
+    street_name = nprand.choice(streetname)
+    house_number = nprand.randint(001, 999) 
+
+def gen_bank():
+    bank_name = gen_name(random.randint(6,9))
+    banktype = ('Commercial', 'Central', 'Investment') 
+    bank_type = nprand.choice(banktype)
+    bank_number = nprand.randint(00000000001, 99999999999) 
+    bank_id = gen_crc32_hash(bank_name)
+   
