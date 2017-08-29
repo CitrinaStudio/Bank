@@ -61,8 +61,6 @@ def gen_bank_adress(): #bl9 ne beite
     house_number = nprand.randint(001, 999) 
 
 def gen_bank():
-    queris_pool = ""
-    queris_in_pool = 0
 
     for i in range(0, count, 1):
         bank_name = gen_name(random.randint(6,9))
@@ -71,14 +69,7 @@ def gen_bank():
         bank_number = nprand.randint(00000000001, 99999999999) 
         bank_id = gen_crc32_hash(bank_name)
         bank_capital = nprand.randint(50000000, 100000000)
-
-    queris_in_pool += 1
     
-    if queris_in_pool >= 500:
-            queris_in_pool = 0
-            driver.execute_cqlsh(queris_pool)
-            queris_pool = ""
-
     driver.execute_cqlsh(queris_pool)
 
 def gen_situations():
