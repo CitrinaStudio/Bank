@@ -40,5 +40,5 @@ def gen_situations():
     s1 = ('Works stably and without delays')
     s2 = ('This year the banks capital increased')
     s3 = ('The dollar rate rose by 32 kopecks and the bank went bankrupt, all employees were fired and the coins of the bank climbed into huge debts. ')
-    a = (s1, s2, s3)
-    nprand.choice(a)
+    sits_list = (s1, s2, s3)
+    nprand.choice(sits_list)
