@@ -3,8 +3,9 @@
 import string
 import zlib
 
-
 from numpy import random as nprand
+
+import driver
 
 def gen_crc32_hash(params):
     id = str(hex(zlib.crc32(str(params).encode("utf-8"))).split('x')[-1])
@@ -29,12 +30,28 @@ def gen_card():
 
     return (card_type, card_number, card_id)
 
-def gen_user():
-    bill_id = nprand.randint(1, 1000000)
-    user_id = nprand.randint(1, 1000000)
-    balance = nprand.randint(50, 100000000)
-<<<<<<< HEAD
-    name = gen_name(random.randint(1, 5))
+def gen_user(count):
+    queris_pool = ""
+    queris_in_pool = 0
+
+    for i in range(0, count, 1):
+    
+        bill_id = nprand.randint(1, 1000000)
+        user_id = nprand.randint(1, 1000000)
+        balance = nprand.randint(50, 100000000)
+        name = gen_name(random.randint(1, 5))
+
+    queris_pool += "INSERT INTO . (user_id, name, balance, bill_id) VALUES ('%s', '%s', '%s', '%s'); " % (
+            user_id, name, balance, bill_id)
+
+    queris_in_pool += 1
+    
+    if queris_in_pool >= 500:
+            queris_in_pool = 0
+            driver.execute_cqlsh(queris_pool)
+            queris_pool = ""
+
+    driver.execute_cqlsh(queris_pool)
 
 def gen_bank_adress(): #bl9 ne beite
     cityname = ('A', 'B', 'C', 'D', 'E') 
@@ -44,14 +61,25 @@ def gen_bank_adress(): #bl9 ne beite
     house_number = nprand.randint(001, 999) 
 
 def gen_bank():
-    bank_name = gen_name(random.randint(6,9))
-    banktype = ('Commercial', 'Central', 'Investment') 
-    bank_type = nprand.choice(banktype)
-    bank_number = nprand.randint(00000000001, 99999999999) 
-    bank_id = gen_crc32_hash(bank_name)
-   
-=======
-    name = gen_name(random.randint(3, 7))
+    queris_pool = ""
+    queris_in_pool = 0
+
+    for i in range(0, count, 1):
+        bank_name = gen_name(random.randint(6,9))
+        banktype = ('Commercial', 'Central', 'Investment') 
+        bank_type = nprand.choice(banktype)
+        bank_number = nprand.randint(00000000001, 99999999999) 
+        bank_id = gen_crc32_hash(bank_name)
+        bank_capital = nprand.randint(50000000, 100000000)
+
+    queris_in_pool += 1
+    
+    if queris_in_pool >= 500:
+            queris_in_pool = 0
+            driver.execute_cqlsh(queris_pool)
+            queris_pool = ""
+
+    driver.execute_cqlsh(queris_pool)
 
 def gen_situations():
     name_bank = gen_name(random.randint(4, 6))
@@ -60,4 +88,3 @@ def gen_situations():
     s3 = ('The dollar rate rose by 32 kopecks and the bank went bankrupt, all employees were fired and the coins of the bank climbed into huge debts. ')
     sits_list = (s1, s2, s3)
     nprand.choice(sits_list)
->>>>>>> 20c4cd7bf06add71eb3e948e270597f4056ea52d
