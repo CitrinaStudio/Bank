@@ -69,7 +69,10 @@ def gen_bank():
         bank_number = nprand.randint(00000000001, 99999999999) 
         bank_id = gen_crc32_hash(bank_name)
         bank_capital = nprand.randint(50000000, 100000000)
-    
+
+    queris_pool += "INSERT INTO bank_0.bank (bank_id, bank_name, bank_type, bank_number, bank_capital) VALUES ('%s', '%s', '%s', '%s', '%s'); " % (
+            bank_id, bank_name, bank_type, bank_number,bank_capital)
+
     driver.execute_cqlsh(queris_pool)
 
 def gen_situations():
