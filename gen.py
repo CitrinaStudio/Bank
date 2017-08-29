@@ -33,6 +33,7 @@ def gen_user():
     bill_id = nprand.randint(1, 1000000)
     user_id = nprand.randint(1, 1000000)
     balance = nprand.randint(50, 100000000)
+<<<<<<< HEAD
     name = gen_name(random.randint(1, 5))
 
 def gen_bank_adress(): #bl9 ne beite
@@ -49,3 +50,14 @@ def gen_bank():
     bank_number = nprand.randint(00000000001, 99999999999) 
     bank_id = gen_crc32_hash(bank_name)
    
+=======
+    name = gen_name(random.randint(3, 7))
+
+def gen_situations():
+    name_bank = gen_name(random.randint(4, 6))
+    s1 = ('Works stably and without delays')
+    s2 = ('This year the banks capital increased')
+    s3 = ('The dollar rate rose by 32 kopecks and the bank went bankrupt, all employees were fired and the coins of the bank climbed into huge debts. ')
+    sits_list = (s1, s2, s3)
+    nprand.choice(sits_list)
+>>>>>>> 20c4cd7bf06add71eb3e948e270597f4056ea52d
